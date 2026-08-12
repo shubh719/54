@@ -1,0 +1,373 @@
+@import "tailwindcss";
+
+@theme {
+  /* Shape rule (single radius system):
+     - Interactive controls (buttons, inputs): 6px
+     - Cards, panels, tiles: 14px
+     - Medallions / avatars / step markers: full round (rounded-full)
+     Z-index scale: header 40, mobile menu overlay 50, grain 60. */
+  --font-sans: "Geist Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: "Space Grotesk", "Geist Sans", ui-sans-serif, system-ui, sans-serif;
+
+  --color-black-50: #fafafa;
+  --color-black-100: #f5f5f5;
+  --color-black-200: #e6e6e6;
+  --color-black-300: #d6d6d6;
+  --color-black-400: #a5a5a5;
+  --color-black-500: #767676;
+  --color-black-600: #575757;
+  --color-black-700: #434343;
+  --color-black-800: #292929;
+  --color-black-900: #1a1a1a;
+  --color-black-950: #0a0a0a;
+
+  --color-cream: #f1efe9;
+}
+
+/*
+  Material Symbols (Outlined) load self-hosted via @fontsource
+  (imported in main.jsx). Defined here without a font-size so
+  Tailwind text-* utilities can size glyphs.
+*/
+.ms {
+  font-family: "Material Symbols Outlined";
+  font-weight: normal;
+  font-style: normal;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  font-feature-settings: "liga";
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-white font-sans text-black-700 antialiased;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+  }
+
+  ::selection {
+    background-color: var(--color-black-950);
+    color: var(--color-cream);
+  }
+
+  :focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
+  }
+
+  input,
+  textarea {
+    caret-color: var(--color-black-950);
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--color-black-300);
+    border: 3px solid var(--color-white);
+    border-radius: 8px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: var(--color-black-500);
+  }
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-black-300) transparent;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  .container-site {
+    @apply mx-auto w-full max-w-[1240px] px-6 md:px-16;
+  }
+
+  .hero-pad {
+    @apply pt-12 pb-8 md:pt-24 md:pb-20;
+  }
+
+  .hero-cta-margin {
+    @apply mt-6;
+  }
+
+  /* Short mobile viewports (e.g. 375x667) — tighten hero spacing so the
+     marquee still lands on the fold. */
+  @media (max-height: 700px) {
+    .hero-pad {
+      padding-top: 2.5rem;
+      padding-bottom: 2rem;
+    }
+    .hero-cta-margin {
+      margin-top: 1.5rem;
+    }
+  }
+
+  .section-pad {
+    @apply py-20 md:py-32;
+  }
+
+  .btn {
+    @apply inline-flex select-none items-center justify-center gap-2 rounded-[6px] px-7 py-3.5 font-display text-[13px] font-medium uppercase tracking-[0.18em] transition-[transform,background-color,border-color,color] duration-200 ease-out;
+  }
+  .btn:active {
+    transform: scale(0.97);
+  }
+
+  .btn-primary {
+    @apply bg-black-950 text-white;
+  }
+  .btn-primary:hover {
+    background-color: var(--color-black-800);
+  }
+
+  .btn-secondary {
+    @apply border border-black-950 bg-transparent text-black-950;
+  }
+  .btn-secondary:hover {
+    background-color: var(--color-black-50);
+  }
+
+  .btn-inverse {
+    @apply bg-white text-black-950;
+  }
+  .btn-inverse:hover {
+    background-color: var(--color-black-100);
+  }
+
+  .btn-inverse-outline {
+    @apply border border-white/70 bg-transparent text-white;
+  }
+  .btn-inverse-outline:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .btn-sm {
+    @apply px-5 py-3 text-[12px];
+  }
+
+  .btn-lg {
+    @apply px-10 py-4 text-[15px];
+  }
+
+  .label {
+    @apply mb-2 block text-sm font-medium text-black-900;
+  }
+
+  .input {
+    @apply w-full rounded-[6px] border border-black-200 bg-white px-4 py-3 text-[15px] text-black-900 transition-colors duration-200 placeholder:text-black-400;
+  }
+  .input:hover {
+    border-color: var(--color-black-300);
+  }
+  .input:focus {
+    outline: none;
+    border-color: var(--color-black-950);
+  }
+  .input[aria-invalid="true"] {
+    border-color: var(--color-black-950);
+    box-shadow: 0 0 0 1px var(--color-black-950);
+  }
+
+  .input-dark {
+    @apply w-full rounded-[6px] border border-white/20 bg-black-950 px-4 py-3 text-[15px] text-cream transition-colors duration-200 placeholder:text-black-400;
+  }
+  .input-dark:hover {
+    border-color: rgba(255, 255, 255, 0.35);
+  }
+  .input-dark:focus {
+    outline: none;
+    border-color: var(--color-white);
+  }
+  .input-dark[aria-invalid="true"] {
+    border-color: var(--color-white);
+    box-shadow: 0 0 0 1px var(--color-white);
+  }
+
+  .section-label {
+    @apply mb-4 block font-display text-[12px] font-medium uppercase tracking-[0.22em] text-black-600;
+  }
+  .section-label::before {
+    content: "";
+    display: inline-block;
+    width: 28px;
+    height: 1px;
+    background-color: currentColor;
+    margin-right: 12px;
+    vertical-align: middle;
+  }
+
+  .h2 {
+    @apply font-display text-[clamp(26px,7.5vw,30px)] font-semibold leading-[1.08] tracking-[-0.02em] text-black-900 text-balance sm:text-[34px] md:text-[40px] lg:text-[44px];
+  }
+
+  /* Scroll-reveal (used by <Reveal />) — fade + rise, staggered via inline delay */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition:
+      opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Fixed film-grain overlay — breaks digital flatness without adding
+     pattern weight. Non-interactive; sits above content, below nothing
+     user-facing since pointer-events are off. */
+  .grain {
+    position: fixed;
+    inset: 0;
+    z-index: 60;
+    pointer-events: none;
+    opacity: 0.045;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* Hero entrance */
+  .hero-rise {
+    animation: hero-rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+  @keyframes hero-rise {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Mobile nav overlay entrance */
+  .overlay-in {
+    animation: overlay-in 0.25s ease-out both;
+  }
+  @keyframes overlay-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  /* Infinite marquee — track holds repeated identical copies; shifting by
+     exactly one copy width (-25%) loops seamlessly on every viewport. */
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    animation: marquee-scroll 16s linear infinite;
+    will-change: transform;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-track {
+      animation-play-state: paused;
+    }
+  }
+  .marquee-track:hover {
+    animation-play-state: paused;
+  }
+  @keyframes marquee-scroll {
+    to {
+      transform: translateX(-25%);
+    }
+  }
+
+  /* Process connector rail (mobile, vertical). Each step is a two-column
+     grid (64px circle + content), so the circle center sits 32px from the
+     step's left edge. Older note kept for context: previously the rail
+     hung at 95px and cut through the text column. */
+  .process-line::before,
+  .process-line::after {
+    content: "";
+    position: absolute;
+    left: 32px;
+    width: 2px;
+    transform: translateX(-50%);
+    background-color: var(--color-black-950);
+  }
+  .process-line::before {
+    top: 0;
+    height: 32px;
+  }
+  .process-line::after {
+    top: 32px;
+    bottom: 0;
+  }
+  .process-line:first-child::before,
+  .process-line:last-child::after {
+    display: none;
+  }
+  @media (min-width: 1024px) {
+    .process-line::before,
+    .process-line::after {
+      display: none;
+    }
+  }
+}
+
+/*
+  Short-mobile-viewport tightening (max-height). These rules live outside
+  any cascade layer so they override Tailwind utility classes with the
+  same specificity — unlayered declarations always beat layered ones.
+  Keep the hero and the mobile menu fully usable down to ~320x568 and
+  landscape phones.
+*/
+@media (max-height: 700px) {
+  .hero-label {
+    margin-top: 0;
+  }
+  .hero-title {
+    margin-top: 0.75rem;
+    font-size: clamp(42px, 10vw, 88px);
+  }
+  .hero-sub {
+    margin-top: 0.75rem;
+  }
+  .hero-cta-margin {
+    margin-top: 1.5rem;
+  }
+  .mobile-menu-link {
+    padding-top: 0.875rem;
+    padding-bottom: 0.875rem;
+  }
+}
