@@ -1,7 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 import Icon from "./Icon";
 import Logo from "./Logo";
-import { navLinks, CTA_CONTACT, site, whatsappUrl } from "../data/site";
+import {
+  navLinks,
+  CTA_CONTACT,
+  site,
+  whatsappUrl,
+  hasConfiguredWhatsApp,
+} from "../data/site";
 
 export default function Nav() {
   const [open, setOpen] = useState(false);
@@ -144,14 +150,18 @@ export default function Nav() {
                 </a>
               </li>
               <li>
-                <a
-                  href={whatsappUrl()}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-black-300 transition-colors duration-200 hover:text-white"
-                >
-                  WhatsApp us
-                </a>
+                {hasConfiguredWhatsApp() ? (
+                  <a
+                    href={whatsappUrl()}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-black-300 transition-colors duration-200 hover:text-white"
+                  >
+                    WhatsApp us
+                  </a>
+                ) : (
+                  <span className="text-black-400">WhatsApp coming soon</span>
+                )}
               </li>
               <li className="text-black-400">{site.location}</li>
             </ul>

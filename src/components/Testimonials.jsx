@@ -18,17 +18,21 @@ export default function Testimonials() {
             What it's like to work with FiveFour.
           </p>
           <p className="mt-3 text-[13px] text-black-500">
-            Sample quotes. Real client reviews replace these once we have them.
+            Sample quotes for now. Real client reviews will replace these once
+            they are available.
           </p>
         </div>
 
         <ul
           aria-label="Client testimonials, scrollable"
           tabIndex={0}
-          className="-mx-6 mt-12 flex snap-x snap-mandatory gap-5 overflow-x-auto px-6 pb-4 outline-none md:-mx-16 md:mt-16 md:gap-6 md:px-16"
+          className="-mx-6 mt-12 flex snap-x snap-mandatory gap-5 overflow-x-auto px-6 pb-4 outline-none md:-mx-16 md:mt-16 md:gap-6 md:px-16 lg:grid lg:grid-cols-3 lg:overflow-visible lg:px-0"
         >
           {testimonials.map((testimonial) => (
-            <li key={testimonial.name} className="h-full w-[85%] shrink-0 snap-start sm:w-[62%] lg:w-[440px]">
+            <li
+              key={testimonial.name}
+              className="h-full w-[85%] shrink-0 snap-start sm:w-[62%] lg:w-auto lg:shrink"
+            >
               <figure className="flex h-full flex-col rounded-[14px] border border-black-200 bg-white p-8 md:p-10">
                 <blockquote className="flex-1 text-[18px] leading-relaxed text-black-800 md:text-[19px]">
                   “{testimonial.quote}”

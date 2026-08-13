@@ -3,22 +3,14 @@ export default function Logo({ inverted = false }) {
     <a
       href="#top"
       aria-label="Back to top"
-      className="flex shrink-0 items-center gap-2.5"
+      className="flex shrink-0 items-center"
     >
-      <span
-        className={`flex h-10 w-10 items-center justify-center ${
-          inverted ? "bg-white text-black-950" : "bg-black-950 text-cream"
-        }`}
-      >
-        <span className="font-display text-[14px] font-semibold leading-none">54</span>
-      </span>
-      <span
-        className={`font-display text-[19px] font-semibold tracking-tight ${
-          inverted ? "text-cream" : "text-black-950"
-        }`}
-      >
-        FiveFour
-      </span>
+      <img
+        src="/assets/brand/fivefour-logo.svg"
+        alt="FiveFour"
+        className="h-[26px] w-auto select-none"
+        style={inverted ? { filter: "invert(1) brightness(1.15)" } : undefined}
+      />
     </a>
   );
 }

@@ -1,7 +1,12 @@
 import { useState } from "react";
 import Icon from "./Icon";
 import SocialIcon from "./SocialIcon";
-import { site, whatsappUrl, FORMSPREE_ENDPOINT } from "../data/site";
+import {
+  site,
+  whatsappUrl,
+  hasConfiguredWhatsApp,
+  FORMSPREE_ENDPOINT,
+} from "../data/site";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -85,17 +90,26 @@ export default function Contact() {
               </a>
             </li>
             <li>
-              <a
-                href={whatsappUrl()}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group flex items-center gap-3 text-[15px] font-medium text-cream transition-colors duration-200 hover:text-white"
-              >
-                <span className="flex h-11 w-11 items-center justify-center rounded-full border border-white/25 transition-colors duration-200 group-hover:border-white/60">
-                  <SocialIcon name="whatsapp" className="h-5 w-5 text-cream" />
-                </span>
-                WhatsApp us
-              </a>
+              {hasConfiguredWhatsApp() ? (
+                <a
+                  href={whatsappUrl()}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-center gap-3 text-[15px] font-medium text-cream transition-colors duration-200 hover:text-white"
+                >
+                  <span className="flex h-11 w-11 items-center justify-center rounded-full border border-white/25 transition-colors duration-200 group-hover:border-white/60">
+                    <SocialIcon name="whatsapp" className="h-5 w-5 text-cream" />
+                  </span>
+                  WhatsApp us
+                </a>
+              ) : (
+                <div className="group flex items-center gap-3 text-[15px] font-medium text-cream/60">
+                  <span className="flex h-11 w-11 items-center justify-center rounded-full border border-white/15">
+                    <SocialIcon name="whatsapp" className="h-5 w-5 text-cream/60" />
+                  </span>
+                  WhatsApp coming soon
+                </div>
+              )}
             </li>
             <li className="flex items-center gap-3 text-[15px] text-black-300">
               <span className="flex h-11 w-11 items-center justify-center rounded-full border border-white/25">
@@ -114,16 +128,23 @@ export default function Contact() {
                 <div>
                   <p className="text-lg font-medium text-black-900">Message sent.</p>
                   <p className="mt-1.5 text-[15px] leading-relaxed text-black-600">
-                    We'll get back to you shortly. Need a faster answer?{" "}
-                    <a
-                      href={whatsappUrl()}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="font-medium text-black-950 underline decoration-transparent decoration-2 underline-offset-4 transition-colors duration-200 hover:decoration-black-950"
-                    >
-                      Message us on WhatsApp
-                    </a>
-                    .
+                    We'll get back to you shortly.
+                    {hasConfiguredWhatsApp() ? (
+                      <>
+                        {" "}Need a faster answer?{" "}
+                        <a
+                          href={whatsappUrl()}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="font-medium text-black-950 underline decoration-transparent decoration-2 underline-offset-4 transition-colors duration-200 hover:decoration-black-950"
+                        >
+                          Message us on WhatsApp
+                        </a>
+                        .
+                      </>
+                    ) : (
+                      " We'll follow up by email."
+                    )}
                   </p>
                   <button
                     type="button"
@@ -140,6 +161,10 @@ export default function Contact() {
             ) : (
               <form onSubmit={handleSubmit} noValidate>
                 <div className="space-y-6">
+                  <p className="text-[14px] leading-relaxed text-black-300">
+                    Typical projects start with a quick scope check. Tell us
+                    what you need and we’ll reply with a realistic plan.
+                  </p>
                   <div>
                     <label htmlFor="contact-name" className="label text-black-300">
                       Name
@@ -220,16 +245,22 @@ export default function Contact() {
                     <Icon name="error" className="mt-0.5 text-[18px] text-white" />
                     <span>
                       Something went wrong sending your message. Please try
-                      again, or{" "}
-                      <a
-                        href={whatsappUrl()}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="font-medium text-white underline decoration-2 underline-offset-4 hover:decoration-white"
-                      >
-                        message us on WhatsApp
-                      </a>
-                      .
+                      again{hasConfiguredWhatsApp() ? (
+                        <>
+                          , or{" "}
+                          <a
+                            href={whatsappUrl()}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="font-medium text-white underline decoration-2 underline-offset-4 hover:decoration-white"
+                          >
+                            message us on WhatsApp
+                          </a>
+                          .
+                        </>
+                      ) : (
+                        "."
+                      )}
                     </span>
                   </p>
                 )}

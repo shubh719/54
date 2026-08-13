@@ -67,8 +67,8 @@
   }
 
   ::selection {
-    background-color: var(--color-black-950);
-    color: var(--color-cream);
+    background: #4A6FA5;
+    color: #FFFFFF;
   }
 
   :focus-visible {

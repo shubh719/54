@@ -1,7 +1,13 @@
 import Icon from "./Icon";
 import Logo from "./Logo";
 import SocialIcon from "./SocialIcon";
-import { site, whatsappUrl, navLinks } from "../data/site";
+import {
+  site,
+  whatsappUrl,
+  hasConfiguredWhatsApp,
+  hasConfiguredSocials,
+  navLinks,
+} from "../data/site";
 
 const year = new Date().getFullYear();
 
@@ -17,19 +23,23 @@ export default function Footer() {
               pricing, no hidden costs.
             </p>
             <ul className="mt-6 flex items-center gap-3">
-              {site.socials.map((social) => (
-                <li key={social.label}>
-                  <a
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={`${site.name} on ${social.label}`}
-                    className="flex h-11 w-11 items-center justify-center rounded-full border border-black-200 text-black-950 transition-colors duration-200 hover:border-black-950"
-                  >
-                    <SocialIcon name={social.label.toLowerCase()} />
-                  </a>
-                </li>
-              ))}
+              {hasConfiguredSocials() ? (
+                site.socials.map((social) => (
+                  <li key={social.label}>
+                    <a
+                      href={social.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`${site.name} on ${social.label}`}
+                      className="flex h-11 w-11 items-center justify-center rounded-full border border-black-200 text-black-950 transition-colors duration-200 hover:border-black-950"
+                    >
+                      <SocialIcon name={social.label.toLowerCase()} />
+                    </a>
+                  </li>
+                ))
+              ) : (
+                <li className="text-[13px] text-black-500">Social links coming soon</li>
+              )}
               <li>
                 <a
                   href={`mailto:${site.email}`}
@@ -74,14 +84,20 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a
-                  href={whatsappUrl()}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex min-h-11 items-center text-black-800 transition-colors duration-200 hover:text-black-950"
-                >
-                  WhatsApp us
-                </a>
+                {hasConfiguredWhatsApp() ? (
+                  <a
+                    href={whatsappUrl()}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex min-h-11 items-center text-black-800 transition-colors duration-200 hover:text-black-950"
+                  >
+                    WhatsApp us
+                  </a>
+                ) : (
+                  <span className="flex min-h-11 items-center text-black-500">
+                    WhatsApp coming soon
+                  </span>
+                )}
               </li>
               <li className="flex min-h-11 items-center text-black-600">{site.location}</li>
             </ul>

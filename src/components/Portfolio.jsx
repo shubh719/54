@@ -36,9 +36,9 @@ function ProjectTile({ project }) {
         ) : (
           <span
             aria-disabled="true"
-            className="btn btn-inverse-outline btn-sweep btn-sm"
+            className="btn btn-inverse-outline btn-sweep btn-sm cursor-not-allowed opacity-55"
           >
-            <span>Visit Website</span>
+            <span>Link coming soon</span>
             <span aria-hidden="true">↗</span>
           </span>
         )}

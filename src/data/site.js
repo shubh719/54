@@ -25,7 +25,18 @@ export const site = {
 };
 
 export function whatsappUrl() {
+  if (site.whatsappNumber.includes("X")) {
+    return "";
+  }
   return `https://wa.me/${site.whatsappNumber}?text=${encodeURIComponent(site.whatsappMessage)}`;
+}
+
+export function hasConfiguredWhatsApp() {
+  return Boolean(whatsappUrl());
+}
+
+export function hasConfiguredSocials() {
+  return site.socials.some((social) => !/instagram\.com\/?$|facebook\.com\/?$|linkedin\.com\/?$/.test(social.href));
 }
 
 // Contact form — pick: Formspree.

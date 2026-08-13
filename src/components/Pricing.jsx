@@ -6,8 +6,8 @@ function PlanCard({ plan }) {
   const featured = plan.featured;
   return (
     <article
-      className={`flex h-full flex-col rounded-[14px] bg-cream p-5 text-black-950 ${
-        featured ? "ring-1 ring-black-950/20" : ""
+      className={`flex h-full flex-col rounded-[14px] bg-cream p-5 text-black-950 transition-transform duration-200 ease-out ${
+        featured ? "ring-1 ring-black-950/20 lg:-translate-y-2" : ""
       }`}
     >
       <div className="flex items-center justify-between gap-3">
@@ -15,7 +15,7 @@ function PlanCard({ plan }) {
           <Icon name={plan.icon} className="text-[16px] text-white" />
         </span>
         {plan.badge && (
-          <span className="rounded-full bg-black-950 px-2.5 py-1 text-[9px] font-semibold uppercase tracking-[0.14em] text-white">
+          <span className="rounded-full bg-black-950 px-3 py-1 text-[9px] font-semibold uppercase tracking-[0.16em] text-white">
             {plan.badge}
           </span>
         )}
@@ -48,7 +48,7 @@ function PlanCard({ plan }) {
         ))}
       </ul>
 
-      <a href="#contact" className="btn btn-primary mt-auto w-full px-5 py-2.5 text-[11px]">
+      <a href="#contact" className="btn btn-primary mt-8 w-full px-5 py-2.5 text-[11px]">
         {plan.cta}
       </a>
     </article>
@@ -69,6 +69,11 @@ export default function Pricing() {
           <p className="mt-4 text-base leading-relaxed text-black-400">
             {pricing.intro}
           </p>
+          <ul className="mt-6 flex flex-wrap justify-center gap-2 text-[12px] text-black-300">
+            <li className="rounded-full border border-white/15 px-3 py-1.5">One-time pricing</li>
+            <li className="rounded-full border border-white/15 px-3 py-1.5">No retainers</li>
+            <li className="rounded-full border border-white/15 px-3 py-1.5">Clear scope</li>
+          </ul>
           <a href="#contact" className="btn btn-inverse mt-10">
             {CTA_CONTACT}
           </a>

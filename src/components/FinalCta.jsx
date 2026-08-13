@@ -18,6 +18,10 @@ export default function FinalCta() {
           <p className="mt-4 text-base leading-relaxed text-black-300 md:text-lg">
             Most Starter sites go live in 7-10 days from content received.
           </p>
+          <p className="mx-auto mt-3 max-w-lg text-[14px] leading-relaxed text-black-400">
+            Share your business name, services, and contact details, and we’ll
+            help you decide the right starting point.
+          </p>
           <div className="mt-8">
             <a href="#contact" className="btn btn-inverse">
               {CTA_CONTACT}
