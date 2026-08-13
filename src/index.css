@@ -178,6 +178,37 @@
     background-color: rgba(255, 255, 255, 0.1);
   }
 
+  /* Portfolio card button — a white fill sweeps in from the left on hover.
+     The pseudo-element sits below the label, which flips to dark so it
+     stays readable against both the dark card and the white fill. */
+  .btn-sweep {
+    @apply relative overflow-hidden;
+  }
+  .btn-sweep::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background-color: var(--color-white);
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: transform;
+  }
+  .btn-sweep:hover::before,
+  .btn-sweep:focus-visible::before {
+    transform: scaleX(1);
+  }
+  .btn-sweep:hover,
+  .btn-sweep:focus-visible {
+    background-color: transparent;
+    color: var(--color-black-950);
+  }
+  .btn-sweep > * {
+    position: relative;
+    z-index: 1;
+  }
+
   .btn-sm {
     @apply px-5 py-3 text-[12px];
   }
