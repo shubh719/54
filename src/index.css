@@ -22,6 +22,12 @@
   --color-black-950: #0a0a0a;
 
   --color-cream: #f1efe9;
+
+  /* Accent navy family — currently unused. The site is strictly
+     monochrome; nothing uses these tokens today. accent-soft is a light
+     tint of accent (same hue family, ~60% lightness). */
+  --color-accent: #2e5f94;
+  --color-accent-soft: #7797b9;
 }
 
 /*
@@ -67,8 +73,8 @@
   }
 
   ::selection {
-    background: #4A6FA5;
-    color: #FFFFFF;
+    background: var(--color-cream);
+    color: var(--color-black-950);
   }
 
   :focus-visible {

@@ -60,6 +60,7 @@ export const pricing = {
       ],
       cta: "Talk to us",
       featured: false,
+      custom: true,
     },
   ],
 };

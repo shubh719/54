@@ -29,7 +29,7 @@ Business runs on WhatsApp; pricing in INR; client provides content (text/images)
 ## Capabilities and Constraints
 
 - Static marketing site, 12 sections per Design.md.
-- Contact form via Formspree (agent's pick per brief delegation: no backend, no API keys in client; endpoint lives in one config constant).
+- Contact form via Web3Forms (no backend, no API keys in client; key comes from a `VITE_WEB3FORMS_KEY` env var).
 - Social links open in new tabs (Instagram + WhatsApp + mail at minimum).
 - Portfolio: 3 placeholder entries, structured in a data file for easy swap.
 - Pricing section renders fivefour-pricing.md content verbatim.
@@ -44,7 +44,7 @@ Business runs on WhatsApp; pricing in INR; client provides content (text/images)
 ## Evidence on Hand
 
 - Design.md (full page spec) and fivefour-pricing.md (verbatim pricing content).
-- Absent: real client logos, testimonials, portfolio screenshots, social URLs, Formspree endpoint; shipped as clearly labeled placeholders, synthetic copy marked in code comments.
+- Absent: real client logos, testimonials, portfolio screenshots, social URLs, Web3Forms key; shipped as clearly labeled placeholders, synthetic copy marked in code comments.
 
 ## Product Principles
 

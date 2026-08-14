@@ -1,6 +1,7 @@
 // Portfolio — one object per project card.
-// The card component reads only: name, category, tags, description, url.
-// Leave `url` empty ("") until a public link exists — the CTA then stays disabled.
+// The card component reads: name, category, tags, description, url.
+// Leave `url` empty ("") until a public link exists — the CTA then stays
+// disabled (the third card is the "empty slot" demo).
 
 export const projects = [
   {
@@ -20,11 +21,11 @@ export const projects = [
     url: "https://gurukul-classes-8kg7p7ck0-shubhpatelal-gmailcoms-projects.vercel.app/",
   },
   {
-    name: "Your Next Project",
-    category: "Demo",
-    tags: ["Custom Build"],
+    name: "Video Editor Portfolio",
+    category: "Creative Work",
+    tags: ["Cinematic Editing", "Motion Design"],
     description:
-      "A clean slot for your next project — swap in the details and a live link and this card is ready.",
-    url: "",
+      "Portfolio site for a video editor, built to showcase cinematic edits and reels with a clean, visual-first layout.",
+    url: "https://sg-bice.vercel.app/",
   },
 ];

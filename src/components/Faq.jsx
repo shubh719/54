@@ -48,27 +48,35 @@ export default function Faq() {
 
   return (
     <section id="faq" className="section-pad scroll-mt-20">
-      <div className="container-site max-w-[800px]">
-        <div>
-          <h2 className="h2 text-center">Questions, answered.</h2>
-          <p className="mx-auto mt-4 max-w-xl text-center text-base leading-relaxed text-black-600">
-            Everything clients usually ask before starting. Anything else:
-            just message us.
-          </p>
-        </div>
+      <div className="container-site">
+        <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
+          <div className="lg:col-span-4">
+            <div className="lg:sticky lg:top-24">
+              <span className="section-label">FAQ</span>
+              <h2 className="h2">Questions, answered.</h2>
+              <p className="mt-4 max-w-sm text-base leading-relaxed text-black-600">
+                Everything clients usually ask before starting. Anything else:
+                just message us.
+              </p>
+              <a href="#contact" className="btn btn-secondary mt-8">
+                Ask us anything
+              </a>
+            </div>
+          </div>
 
-        <div className="mt-12">
-          <ul className="border-t border-black-200">
-            {faqs.map((item, index) => (
-              <FaqItem
-                key={item.question}
-                item={item}
-                index={index}
-                open={openIndex === index}
-                onToggle={() => setOpenIndex(openIndex === index ? null : index)}
-              />
-            ))}
-          </ul>
+          <div className="lg:col-span-8">
+            <ul className="border-t border-black-200">
+              {faqs.map((item, index) => (
+                <FaqItem
+                  key={item.question}
+                  item={item}
+                  index={index}
+                  open={openIndex === index}
+                  onToggle={() => setOpenIndex(openIndex === index ? null : index)}
+                />
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
     </section>

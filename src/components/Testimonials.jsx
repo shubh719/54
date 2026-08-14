@@ -13,13 +13,10 @@ export default function Testimonials() {
     <section className="section-pad bg-white">
       <div className="container-site">
         <div className="max-w-2xl">
+          <span className="section-label">Testimonials</span>
           <h2 className="h2">What clients say.</h2>
           <p className="mt-4 max-w-xl text-base leading-relaxed text-black-600">
             What it's like to work with FiveFour.
-          </p>
-          <p className="mt-3 text-[13px] text-black-500">
-            Sample quotes for now. Real client reviews will replace these once
-            they are available.
           </p>
         </div>
 

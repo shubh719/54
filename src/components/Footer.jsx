@@ -108,6 +108,20 @@ export default function Footer() {
           <p className="text-[13px] text-black-600">
             © {year} {site.name}. All rights reserved.
           </p>
+          <nav aria-label="Legal" className="flex items-center gap-5">
+            <a
+              href="/privacy.html"
+              className="text-[13px] text-black-600 transition-colors duration-200 hover:text-black-950"
+            >
+              Privacy
+            </a>
+            <a
+              href="/terms.html"
+              className="text-[13px] text-black-600 transition-colors duration-200 hover:text-black-950"
+            >
+              Terms
+            </a>
+          </nav>
           <p className="text-[13px] text-black-600">{site.tagline}</p>
         </div>
       </div>

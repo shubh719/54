@@ -39,17 +39,17 @@ export default function Hero() {
         </p>
 
         <ul
-          className="hero-rise mt-6 flex max-w-3xl flex-wrap items-center justify-center gap-x-4 gap-y-2 text-[13px] text-black-300"
+          className="hero-rise mt-6 hidden max-w-3xl flex-wrap items-center justify-center gap-x-4 gap-y-2 text-[13px] text-black-300 sm:flex"
           style={{ animationDelay: "290ms" }}
           aria-label="Key benefits"
         >
-          <li className="rounded-full border border-white/15 px-3 py-1.5">
+          <li className="rounded-[4px] border border-white/15 px-3 py-1.5">
             Starter starts at ₹4,999
           </li>
-          <li className="rounded-full border border-white/15 px-3 py-1.5">
+          <li className="rounded-[4px] border border-white/15 px-3 py-1.5">
             Launch in 7-10 days
           </li>
-          <li className="rounded-full border border-white/15 px-3 py-1.5">
+          <li className="rounded-[4px] border border-white/15 px-3 py-1.5">
             WhatsApp-first communication
           </li>
         </ul>

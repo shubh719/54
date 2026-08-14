@@ -39,12 +39,6 @@ export function hasConfiguredSocials() {
   return site.socials.some((social) => !/instagram\.com\/?$|facebook\.com\/?$|linkedin\.com\/?$/.test(social.href));
 }
 
-// Contact form — pick: Formspree.
-// Create a free form at https://formspree.io, then paste your endpoint here:
-//   export const FORMSPREE_ENDPOINT = "https://formspree.io/f/abcdwxyz";
-// While this is empty, the form runs in demo mode (no network call, shows success).
-export const FORMSPREE_ENDPOINT = "";
-
 export const navLinks = [
   { label: "Work", href: "#work" },
   { label: "Services", href: "#services" },

@@ -5,8 +5,10 @@ import {
   site,
   whatsappUrl,
   hasConfiguredWhatsApp,
-  FORMSPREE_ENDPOINT,
 } from "../data/site";
+
+const WEB3FORMS_ENDPOINT = "https://api.web3forms.com/submit";
+const WEB3FORMS_KEY = import.meta.env.VITE_WEB3FORMS_KEY;
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -45,23 +47,25 @@ export default function Contact() {
 
     setStatus("sending");
     try {
-      if (FORMSPREE_ENDPOINT) {
-        const response = await fetch(FORMSPREE_ENDPOINT, {
+      if (WEB3FORMS_KEY) {
+        const response = await fetch(WEB3FORMS_ENDPOINT, {
           method: "POST",
           headers: { "Content-Type": "application/json", Accept: "application/json" },
           body: JSON.stringify({
+            access_key: WEB3FORMS_KEY,
             name: values.name.trim(),
             email: values.email.trim(),
             message: values.message.trim(),
-            _subject: `New enquiry from ${values.name.trim()} (fivefour site)`,
+            subject: `New enquiry from ${values.name.trim()} (fivefour site)`,
           }),
         });
-        if (!response.ok) throw new Error(`Formspree responded ${response.status}`);
+        if (!response.ok) throw new Error(`Web3Forms responded ${response.status}`);
       } else {
-        // Demo mode: no Formspree endpoint configured yet (see src/data/site.js).
+        // Demo mode: no VITE_WEB3FORMS_KEY configured yet (see .env.example).
         await new Promise((resolve) => setTimeout(resolve, 700));
       }
       setStatus("success");
+      setValues({ name: "", email: "", message: "" });
     } catch {
       setStatus("error");
     }
@@ -126,7 +130,7 @@ export default function Contact() {
               <div className="flex gap-4 rounded-[10px] bg-white p-6 md:p-8" role="status">
                 <Icon name="check_circle" className="mt-0.5 text-[28px] text-black-950" />
                 <div>
-                  <p className="text-lg font-medium text-black-900">Message sent.</p>
+                  <p className="text-lg font-medium text-black-900">Message sent!</p>
                   <p className="mt-1.5 text-[15px] leading-relaxed text-black-600">
                     We'll get back to you shortly.
                     {hasConfiguredWhatsApp() ? (
@@ -244,8 +248,7 @@ export default function Contact() {
                   <p role="alert" className="mt-6 flex items-start gap-2 rounded-[6px] border border-white/30 bg-black-950 p-4 text-[14px] leading-relaxed text-black-200">
                     <Icon name="error" className="mt-0.5 text-[18px] text-white" />
                     <span>
-                      Something went wrong sending your message. Please try
-                      again{hasConfiguredWhatsApp() ? (
+                      Something went wrong, try again{hasConfiguredWhatsApp() ? (
                         <>
                           , or{" "}
                           <a

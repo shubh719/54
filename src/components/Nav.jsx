@@ -11,8 +11,30 @@ import {
 
 export default function Nav() {
   const [open, setOpen] = useState(false);
+  const [active, setActive] = useState("");
   const triggerRef = useRef(null);
   const closeRef = useRef(null);
+
+  // Scroll-spy: highlight the nav link of the section currently in the
+  // middle band of the viewport.
+  useEffect(() => {
+    const sections = navLinks
+      .map((link) => link.href.slice(1))
+      .map((id) => document.getElementById(id))
+      .filter(Boolean);
+    if (!sections.length) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) setActive(entry.target.id);
+        }
+      },
+      { rootMargin: "-40% 0px -55% 0px", threshold: 0 },
+    );
+    sections.forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     if (!open) return;
@@ -54,11 +76,15 @@ export default function Nav() {
         <nav aria-label="Main" className="hidden lg:block">
           <ul className="flex items-center gap-8">
             {navLinks.map((link) => {
+              const isActive = active === link.href.slice(1);
               return (
                 <li key={link.href}>
                   <a
                     href={link.href}
-                    className="text-[15px] font-medium underline decoration-transparent decoration-2 underline-offset-[6px] text-black-800 transition-colors duration-200 hover:text-black-950 hover:decoration-black-950"
+                    aria-current={isActive ? "true" : undefined}
+                    className={`text-[15px] font-medium underline decoration-transparent decoration-2 underline-offset-[6px] transition-colors duration-200 hover:text-black-950 hover:decoration-black-950 ${
+                      isActive ? "text-black-950 decoration-black-950" : "text-black-800"
+                    }`}
                   >
                     {link.label}
                   </a>
