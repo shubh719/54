@@ -7,7 +7,9 @@ function PlanCard({ plan }) {
   return (
     <article
       className={`flex h-full flex-col rounded-[14px] p-5 transition-[transform,background-color] duration-200 ease-out ${
-        featured ? "bg-black-950 ring-1 ring-cream/70 lg:-translate-y-2" : "bg-cream"
+        featured
+          ? "bg-black-950 ring-1 ring-cream/70"
+          : "bg-white "
       }`}
     >
       <div className="flex items-center justify-between gap-3">
@@ -52,7 +54,9 @@ function PlanCard({ plan }) {
         >
           {plan.price}
         </span>
-        <span className={`text-[12px] ${featured ? "text-black-400" : "text-black-600"}`}>
+        <span
+          className={`text-[12px] ${featured ? "text-black-400" : "text-black-600"}`}
+        >
           / {plan.priceNote}
         </span>
       </p>
@@ -68,7 +72,9 @@ function PlanCard({ plan }) {
               name="check"
               className={`mt-0.5 text-[15px] ${featured ? "text-cream" : "text-black-950"}`}
             />
-            <span className={`text-[13px] leading-snug ${featured ? "text-black-300" : "text-black-600"}`}>
+            <span
+              className={`text-[13px] leading-snug ${featured ? "text-black-300" : "text-black-600"}`}
+            >
               {item}
             </span>
           </li>
@@ -147,16 +153,22 @@ export default function Pricing() {
             {pricing.intro}
           </p>
           <ul className="mt-6 flex flex-wrap justify-center gap-2 text-[12px] text-black-300">
-            <li className="rounded-[4px] border border-white/15 px-3 py-1.5">One-time pricing</li>
-            <li className="rounded-[4px] border border-white/15 px-3 py-1.5">No retainers</li>
-            <li className="rounded-[4px] border border-white/15 px-3 py-1.5">Clear scope</li>
+            <li className="rounded-[4px] border border-white/15 px-3 py-1.5">
+              One-time pricing
+            </li>
+            <li className="rounded-[4px] border border-white/15 px-3 py-1.5">
+              No retainers
+            </li>
+            <li className="rounded-[4px] border border-white/15 px-3 py-1.5">
+              Clear scope
+            </li>
           </ul>
           <a href="#contact" className="btn btn-inverse mt-10">
             {CTA_CONTACT}
           </a>
         </div>
 
-        <div className="mt-12 grid grid-cols-1 gap-4 lg:mt-16 lg:grid-cols-2">
+        <div className="mt-12 grid grid-cols-1 gap-4 lg:mt-16 lg:grid-cols-2 lg:items-stretch">
           {pricing.plans
             .filter((plan) => !plan.custom)
             .map((plan) => (

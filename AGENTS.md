@@ -30,7 +30,7 @@ Static one-page marketing site for **FiveFour**, a web design agency selling cle
 5. **Process** — white; 4 numbered steps; vertical rail through circle centers on mobile, single horizontal rail on desktop (`lg:before`); wrapped in staggered `Reveal`.
 6. **WhyChooseUs** — black-950; numbered editorial list rows (01–04), no cards.
 7. **Testimonials** — white; horizontal `snap-x` scroll-snap carousel on smaller screens, 3-column grid on large screens, initial-avatar medallions. Quotes are realistic drafts (see placeholders).
-8. **Pricing** (`#pricing`) — black-950; **two price towers** (Starter cream, Growth inverted dark with cream ring + lift, CTAs bottom-aligned) + a full-width Custom panel below (dark `bg-black-900` band: icon, tagline, capability chips, "Custom / quoted after a call", CTA). Square badge. Content mirrors `fivefour-pricing.md`.
+8. **Pricing** (`#pricing`) — black-950; **two price towers** (Starter cream, Growth inverted dark with cream ring) in a stretching 2-col grid (tops aligned, both buttons pinned to the bottom via `mt-auto`) + a full-width Custom panel below (dark `bg-black-900` band: icon, tagline, capability chips, "Custom / quoted after a call", CTA). Square badge. Content mirrors `fivefour-pricing.md`.
 9. **FAQ** — white; two-column layout on desktop (sticky intro + "Ask us anything" CTA left, accordion list right), single-open accordion with `grid-template-rows` expand animation, `add`/`remove` icons.
 10. **Contact** (`#contact`) — black-950; Web3Forms form (dark inputs) + contact list; success/error states, inline validation.
 11. **FinalCta** — black-950 with giant faded "54" watermark; single CTA plus short support line.
