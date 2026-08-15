@@ -2,6 +2,7 @@ import { useState } from "react";
 import Icon from "./Icon";
 import {
   site,
+  emailUrl,
   whatsappUrl,
   hasConfiguredWhatsApp,
 } from "../data/site";
@@ -83,7 +84,9 @@ export default function Contact() {
           <ul className="mt-8 space-y-4">
             <li>
               <a
-                href={`mailto:${site.email}`}
+                href={emailUrl()}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="group flex items-center gap-3 text-[15px] font-medium text-cream transition-colors duration-200 hover:text-white"
               >
                 <span className="flex h-11 w-11 items-center justify-center rounded-full border border-white/25 transition-colors duration-200 group-hover:border-white/60">

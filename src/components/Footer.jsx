@@ -1,11 +1,6 @@
 import Icon from "./Icon";
 import Logo from "./Logo";
-import {
-  site,
-  whatsappUrl,
-  hasConfiguredWhatsApp,
-  navLinks,
-} from "../data/site";
+import { site, emailUrl, navLinks } from "../data/site";
 
 const year = new Date().getFullYear();
 
@@ -23,7 +18,9 @@ export default function Footer() {
             <ul className="mt-6 flex items-center gap-3">
               <li>
                 <a
-                  href={`mailto:${site.email}`}
+                  href={emailUrl()}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   aria-label={`Email ${site.name}`}
                   className="flex h-11 w-11 items-center justify-center rounded-full border border-black-200 text-black-950 transition-colors duration-200 hover:border-black-950"
                 >
@@ -58,27 +55,13 @@ export default function Footer() {
             <ul className="mt-4 space-y-1 text-[15px]">
               <li>
                 <a
-                  href={`mailto:${site.email}`}
+                  href={emailUrl()}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="flex min-h-11 items-center text-black-800 transition-colors duration-200 hover:text-black-950"
                 >
                   {site.email}
                 </a>
-              </li>
-              <li>
-                {hasConfiguredWhatsApp() ? (
-                  <a
-                    href={whatsappUrl()}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex min-h-11 items-center text-black-800 transition-colors duration-200 hover:text-black-950"
-                  >
-                    WhatsApp us
-                  </a>
-                ) : (
-                  <span className="flex min-h-11 items-center text-black-500">
-                    WhatsApp coming soon
-                  </span>
-                )}
               </li>
               <li className="flex min-h-11 items-center text-black-600">{site.location}</li>
             </ul>
