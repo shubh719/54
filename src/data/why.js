@@ -16,7 +16,7 @@ export const reasons = [
     icon: "support_agent",
     title: "Direct support",
     description:
-      "Skip the ticket system. One WhatsApp message and you're talking to the person who built your site.",
+      "Skip the ticket system. One email and you're talking directly to the person who built your site.",
   },
   {
     icon: "storefront",

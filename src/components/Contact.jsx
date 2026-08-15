@@ -1,6 +1,5 @@
 import { useState } from "react";
 import Icon from "./Icon";
-import SocialIcon from "./SocialIcon";
 import {
   site,
   whatsappUrl,
@@ -92,28 +91,6 @@ export default function Contact() {
                 </span>
                 {site.email}
               </a>
-            </li>
-            <li>
-              {hasConfiguredWhatsApp() ? (
-                <a
-                  href={whatsappUrl()}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group flex items-center gap-3 text-[15px] font-medium text-cream transition-colors duration-200 hover:text-white"
-                >
-                  <span className="flex h-11 w-11 items-center justify-center rounded-full border border-white/25 transition-colors duration-200 group-hover:border-white/60">
-                    <SocialIcon name="whatsapp" className="h-5 w-5 text-cream" />
-                  </span>
-                  WhatsApp us
-                </a>
-              ) : (
-                <div className="group flex items-center gap-3 text-[15px] font-medium text-cream/60">
-                  <span className="flex h-11 w-11 items-center justify-center rounded-full border border-white/15">
-                    <SocialIcon name="whatsapp" className="h-5 w-5 text-cream/60" />
-                  </span>
-                  WhatsApp coming soon
-                </div>
-              )}
             </li>
             <li className="flex items-center gap-3 text-[15px] text-black-300">
               <span className="flex h-11 w-11 items-center justify-center rounded-full border border-white/25">

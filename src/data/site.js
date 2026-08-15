@@ -6,7 +6,7 @@ export const site = {
   tagline: "Websites for growing businesses.",
 
   // TODO: set your real email address.
-  email: "hello@fivefour.in",
+  email: "fivefour.codes@gmail.com",
 
   // TODO: set your real WhatsApp number in international format (country code, no +).
   // Used to build wa.me links in the footer, contact section and pricing notes.
@@ -33,10 +33,6 @@ export function whatsappUrl() {
 
 export function hasConfiguredWhatsApp() {
   return Boolean(whatsappUrl());
-}
-
-export function hasConfiguredSocials() {
-  return site.socials.some((social) => !/instagram\.com\/?$|facebook\.com\/?$|linkedin\.com\/?$/.test(social.href));
 }
 
 export const navLinks = [

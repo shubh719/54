@@ -33,7 +33,8 @@ export default function Hero() {
           className="hero-sub hero-rise mt-3 max-w-[46ch] text-lg leading-snug text-black-300 md:text-xl"
           style={{ animationDelay: "240ms" }}
         >
-          Fast, mobile-first websites for small businesses.
+          FiveFour is a small web design agency building fast,
+          mobile-first websites.
           <br />
           Honest one-time pricing. No hidden costs.
         </p>

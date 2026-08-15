@@ -1,19 +1,58 @@
 import { useEffect, useRef, useState } from "react";
 import Icon from "./Icon";
 import Logo from "./Logo";
-import {
-  navLinks,
-  CTA_CONTACT,
-  site,
-  whatsappUrl,
-  hasConfiguredWhatsApp,
-} from "../data/site";
+import { navLinks, CTA_CONTACT } from "../data/site";
+
+const ITEM_STAGGER_MS = 45;
+const OVERLAY_FADE_MS = 350;
+const CLOSE_BUFFER_MS = 50;
 
 export default function Nav() {
   const [open, setOpen] = useState(false);
+  const [closing, setClosing] = useState(false);
   const [active, setActive] = useState("");
   const triggerRef = useRef(null);
   const closeRef = useRef(null);
+  const closingRef = useRef(false);
+  const closeTimer = useRef(null);
+
+  // Exit: quick fade of the whole overlay (and everything inside it), then
+  // the menu unmounts. No mirrored per-item animation — fast and simple.
+  const closeDuration = OVERLAY_FADE_MS + CLOSE_BUFFER_MS;
+
+  function openMenu() {
+    if (closeTimer.current) {
+      clearTimeout(closeTimer.current);
+      closeTimer.current = null;
+    }
+    closingRef.current = false;
+    setClosing(false);
+    setOpen(true);
+  }
+
+  function closeMenu() {
+    if (closingRef.current) return;
+    closingRef.current = true;
+    setClosing(true);
+    closeTimer.current = setTimeout(() => {
+      closingRef.current = false;
+      setClosing(false);
+      setOpen(false);
+    }, closeDuration);
+  }
+
+  function toggleMenu() {
+    if (open) {
+      closeMenu();
+    } else {
+      openMenu();
+    }
+  }
+
+  // Clear any pending close timer on unmount.
+  useEffect(() => {
+    return () => clearTimeout(closeTimer.current);
+  }, []);
 
   // Scroll-spy: highlight the nav link of the section currently in the
   // middle band of the viewport.
@@ -40,10 +79,18 @@ export default function Nav() {
     if (!open) return;
 
     const onKey = (event) => {
-      if (event.key === "Escape") setOpen(false);
+      if (event.key === "Escape") closeMenu();
     };
     const onDesktop = (event) => {
-      if (event.matches) setOpen(false);
+      if (event.matches) {
+        if (closeTimer.current) {
+          clearTimeout(closeTimer.current);
+          closeTimer.current = null;
+        }
+        closingRef.current = false;
+        setClosing(false);
+        setOpen(false);
+      }
     };
 
     document.addEventListener("keydown", onKey);
@@ -105,20 +152,22 @@ export default function Nav() {
             aria-expanded={open}
             aria-controls="mobile-menu"
             aria-label={open ? "Close menu" : "Open menu"}
-            onClick={() => setOpen((v) => !v)}
+            onClick={toggleMenu}
           >
             <Icon name="menu" className="text-[20px]" />
           </button>
         </div>
       </div>
 
-      {open && (
+      {(open || closing) && (
         <div
           id="mobile-menu"
           role="dialog"
           aria-modal="true"
           aria-label="Menu"
-          className="overlay-in fixed inset-0 z-50 flex flex-col overflow-y-auto bg-black-950 lg:hidden"
+          className={`${
+            closing ? "overlay-out" : "overlay-in"
+          } fixed inset-0 z-50 flex flex-col overflow-y-auto bg-black-950 lg:hidden`}
         >
           <div className="container-site flex h-16 shrink-0 items-center justify-between gap-6">
             <Logo inverted />
@@ -126,7 +175,7 @@ export default function Nav() {
               ref={closeRef}
               type="button"
               aria-label="Close menu"
-              onClick={() => setOpen(false)}
+              onClick={closeMenu}
               className="flex h-11 w-11 items-center justify-center border border-white/40 text-cream transition-colors duration-200 hover:border-white hover:text-white"
             >
               <Icon name="close" className="text-[20px]" />
@@ -140,9 +189,9 @@ export default function Nav() {
                   <li key={link.href} className="border-b border-white/10">
                     <a
                       href={link.href}
-                      onClick={() => setOpen(false)}
+                      onClick={closeMenu}
                       className="mobile-menu-link hero-rise group flex items-baseline gap-6 py-5 md:py-6"
-                      style={{ animationDelay: `${index * 45}ms` }}
+                      style={{ animationDelay: `${index * ITEM_STAGGER_MS}ms` }}
                     >
                       <span className="font-display text-[13px] font-medium tracking-[0.2em] text-white/40">
                         {String(index + 1).padStart(2, "0")}
@@ -160,37 +209,12 @@ export default function Nav() {
           <div className="container-site shrink-0 pb-10">
             <a
               href="#contact"
-              onClick={() => setOpen(false)}
+              onClick={closeMenu}
               className="btn btn-inverse w-full"
             >
               {CTA_CONTACT}
               <Icon name="arrow_forward" className="text-[18px]" />
             </a>
-            <ul className="mt-6 space-y-1.5 text-[14px]">
-              <li>
-                <a
-                  href={`mailto:${site.email}`}
-                  className="text-black-300 transition-colors duration-200 hover:text-white"
-                >
-                  {site.email}
-                </a>
-              </li>
-              <li>
-                {hasConfiguredWhatsApp() ? (
-                  <a
-                    href={whatsappUrl()}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-black-300 transition-colors duration-200 hover:text-white"
-                  >
-                    WhatsApp us
-                  </a>
-                ) : (
-                  <span className="text-black-400">WhatsApp coming soon</span>
-                )}
-              </li>
-              <li className="text-black-400">{site.location}</li>
-            </ul>
           </div>
         </div>
       )}

@@ -7,7 +7,7 @@ export default function Logo({ inverted = false }) {
     >
       <img
         src="/assets/brand/fivefour-logo.svg"
-        alt="FiveFour"
+        alt="FiveFour web agency logo"
         className="h-[26px] w-auto select-none"
         style={inverted ? { filter: "invert(1) brightness(1.15)" } : undefined}
       />

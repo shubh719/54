@@ -1,11 +1,9 @@
 import Icon from "./Icon";
 import Logo from "./Logo";
-import SocialIcon from "./SocialIcon";
 import {
   site,
   whatsappUrl,
   hasConfiguredWhatsApp,
-  hasConfiguredSocials,
   navLinks,
 } from "../data/site";
 
@@ -19,27 +17,10 @@ export default function Footer() {
           <div className="md:col-span-6">
             <Logo />
             <p className="mt-4 max-w-xs text-[15px] leading-relaxed text-black-600">
-              Clean, mobile-first websites for small businesses. Honest
-              pricing, no hidden costs.
+              FiveFour — also known as 54 — builds clean, mobile-first
+              websites for small businesses. Honest pricing, no hidden costs.
             </p>
             <ul className="mt-6 flex items-center gap-3">
-              {hasConfiguredSocials() ? (
-                site.socials.map((social) => (
-                  <li key={social.label}>
-                    <a
-                      href={social.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={`${site.name} on ${social.label}`}
-                      className="flex h-11 w-11 items-center justify-center rounded-full border border-black-200 text-black-950 transition-colors duration-200 hover:border-black-950"
-                    >
-                      <SocialIcon name={social.label.toLowerCase()} />
-                    </a>
-                  </li>
-                ))
-              ) : (
-                <li className="text-[13px] text-black-500">Social links coming soon</li>
-              )}
               <li>
                 <a
                   href={`mailto:${site.email}`}

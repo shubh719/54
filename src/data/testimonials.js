@@ -5,20 +5,20 @@
 export const testimonials = [
   {
     quote:
-      "The site went live in nine days and the booking form gets used every single day. We've stopped taking catering orders over the phone entirely.",
-    name: "Farhan Sheikh",
-    business: "Owner, Bombay Bites Catering, Pune",
+      "Managing water meter readings for the whole society used to mean door-to-door rounds and paper registers. Now everything's logged and approved digitally — saves us hours every month.",
+    name: "Ramesh Patel",
+    business: "Committee Member, Mansarovar Residency",
   },
   {
     quote:
-      "One payment, no monthly bill. That's exactly what a shop like ours needed — customers search our name on Google and the site comes up first.",
-    name: "Kavita Desai",
-    business: "Proprietor, Desai Dry Fruits, Ahmedabad",
+      "Parents can now see our class details and reach out for admissions without calling us every time. The site made our tuition classes look far more organized.",
+    name: "Rahul Sharma",
+    business: "Founder, Gurukul Tuition Classes",
   },
   {
     quote:
-      "They explained every step in plain language and never pushed extras we didn't need. I haven't touched the site once since launch — it just works.",
-    name: "Arjun Nair",
-    business: "Founder, Coastline Fitness, Kochi",
+      "I needed a portfolio that actually showed my edits well, not a generic template. FiveFour built something clean that puts the work front and center.",
+    name: "Shubh Gandharva",
+    business: "Video Editor",
   },
 ];

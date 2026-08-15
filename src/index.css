@@ -244,6 +244,8 @@
 
   .input-dark {
     @apply w-full rounded-[6px] border border-white/20 bg-black-950 px-4 py-3 text-[15px] text-cream transition-colors duration-200 placeholder:text-black-400;
+    color: var(--color-cream);
+    caret-color: var(--color-white);
   }
   .input-dark:hover {
     border-color: rgba(255, 255, 255, 0.35);
@@ -326,6 +328,20 @@
       opacity: 1;
     }
   }
+
+  /* Mobile nav overlay exit — quick fade-out of the whole menu. Fades the
+   black backdrop and everything inside it together. */
+.overlay-out {
+  animation: overlay-out 0.35s ease-in both;
+}
+@keyframes overlay-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
 
   /* Infinite marquee — track holds repeated identical copies; shifting by
      exactly one copy width (-25%) loops seamlessly on every viewport. */
