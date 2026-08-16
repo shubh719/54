@@ -85,8 +85,6 @@ export default function Contact() {
             <li>
               <a
                 href={emailUrl()}
-                target="_blank"
-                rel="noopener noreferrer"
                 className="group flex items-center gap-3 text-[15px] font-medium text-cream transition-colors duration-200 hover:text-white"
               >
                 <span className="flex h-11 w-11 items-center justify-center rounded-full border border-white/25 transition-colors duration-200 group-hover:border-white/60">

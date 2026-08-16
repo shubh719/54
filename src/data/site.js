@@ -35,10 +35,8 @@ export function hasConfiguredWhatsApp() {
   return Boolean(whatsappUrl());
 }
 
-// mailto: links silently fail when the OS has no default mail client, so
-// email links open a Gmail compose window instead.
 export function emailUrl() {
-  return `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(site.email)}`;
+  return `mailto:${site.email}`;
 }
 
 export const navLinks = [

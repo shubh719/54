@@ -19,8 +19,6 @@ export default function Footer() {
               <li>
                 <a
                   href={emailUrl()}
-                  target="_blank"
-                  rel="noopener noreferrer"
                   aria-label={`Email ${site.name}`}
                   className="flex h-11 w-11 items-center justify-center rounded-full border border-black-200 text-black-950 transition-colors duration-200 hover:border-black-950"
                 >
@@ -56,8 +54,6 @@ export default function Footer() {
               <li>
                 <a
                   href={emailUrl()}
-                  target="_blank"
-                  rel="noopener noreferrer"
                   className="flex min-h-11 items-center text-black-800 transition-colors duration-200 hover:text-black-950"
                 >
                   {site.email}
