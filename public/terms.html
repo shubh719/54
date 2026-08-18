@@ -3,151 +3,362 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="/assets/brand/fivefour-favicon.png" />
+    <meta name="theme-color" content="#fbfbfa" />
+    <meta
+      name="description"
+      content="FiveFour's Terms of Service — scope, payment, revisions, domains, hosting and support, in plain language."
+    />
     <title>Terms of Service — FiveFour</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <style>
       :root {
-        --paper: #ffffff;
-        --ink: #0a0a0a;
-        --muted: #575757;
-        --line: #d6d6d6;
+        --canvas: #fbfbfa;
+        --ink: #111111;
+        --charcoal: #2f3437;
+        --muted: #787774;
+        --line: #eaeaea;
       }
       * {
         box-sizing: border-box;
       }
+      html {
+        scroll-behavior: smooth;
+      }
       body {
         margin: 0;
-        background: var(--paper);
+        background: var(--canvas);
         color: var(--ink);
-        font-family:
-          "Geist Sans",
-          "Segoe UI",
-          system-ui,
-          -apple-system,
-          sans-serif;
+        font-family: "Geist Sans", "Helvetica Neue", "Segoe UI", system-ui, sans-serif;
         line-height: 1.65;
-      }
-      .wrap {
-        max-width: 720px;
-        margin: 0 auto;
-        padding: 48px 24px 80px;
+        -webkit-font-smoothing: antialiased;
       }
       a {
-        color: var(--ink);
+        color: inherit;
       }
-      h1,
-      h2,
-      h3 {
-        font-family: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
-        letter-spacing: -0.01em;
+      :focus-visible {
+        outline: 2px solid var(--ink);
+        outline-offset: 3px;
       }
-      h1 {
-        font-size: 34px;
-        line-height: 1.1;
-        margin: 0 0 8px;
+
+      /* Texture & ambience — fixed noise overlay and a faint warm light spot */
+      .grain {
+        position: fixed;
+        inset: 0;
+        z-index: 50;
+        pointer-events: none;
+        opacity: 0.035;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
       }
-      h2 {
-        font-size: 20px;
-        margin: 40px 0 8px;
+      .ambient {
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        pointer-events: none;
+        background: radial-gradient(
+          900px circle at 50% -10%,
+          rgba(214, 200, 168, 0.1),
+          transparent 62%
+        );
       }
-      .back {
-        display: inline-block;
-        margin-bottom: 32px;
+      .skip-link {
+        position: absolute;
+        top: -48px;
+        left: 16px;
+        z-index: 60;
+        padding: 10px 16px;
+        border-radius: 6px;
+        background: var(--ink);
+        color: #ffffff;
         font-size: 13px;
         text-decoration: none;
-        border-bottom: 1px solid var(--ink);
+        transition: top 0.2s ease-out;
+      }
+      .skip-link:focus-visible {
+        top: 16px;
+      }
+
+      /* Top bar — brand left, back link right */
+      .topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 20px clamp(20px, 5vw, 48px);
+        border-bottom: 1px solid var(--line);
+        background: rgba(251, 251, 250, 0.92);
+        backdrop-filter: blur(8px);
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+      }
+      .brand img {
+        height: 24px;
+        width: auto;
+        display: block;
+      }
+      .back {
+        font-size: 13.5px;
+        color: var(--muted);
+        text-decoration: none;
+        white-space: nowrap;
+        transition: color 0.2s ease-out;
       }
       .back:hover {
-        opacity: 0.7;
+        color: var(--ink);
+        text-decoration: underline;
+        text-underline-offset: 3px;
       }
-      .meta {
-        font-size: 13px;
+
+      /* Document */
+      .doc {
+        max-width: 1080px;
+        margin: 0 auto;
+        padding: clamp(48px, 8vw, 96px) clamp(20px, 5vw, 48px) 72px;
+      }
+      .eyebrow {
+        margin: 0 0 18px;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 12px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
         color: var(--muted);
+      }
+      h1 {
+        margin: 0;
+        font-family: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
+        font-weight: 700;
+        font-size: clamp(40px, 5.5vw, 56px);
+        line-height: 1.05;
+        letter-spacing: -0.03em;
+        text-wrap: balance;
+      }
+      .updated {
+        margin: 22px 0 0;
+        padding-bottom: 32px;
         border-bottom: 1px solid var(--line);
-        padding-bottom: 16px;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 12.5px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+
+      /* Sections — full-width single column, aligned to the title's left edge */
+      section {
+        padding: 36px 0;
+        border-bottom: 1px solid var(--line);
+        scroll-margin-top: 32px;
+      }
+      h2 {
+        margin: 0 0 12px;
+        font-size: 19px;
+        font-weight: 600;
+        letter-spacing: -0.01em;
+        text-wrap: balance;
       }
       p,
       li {
-        font-size: 15px;
+        margin: 0;
+        font-size: 15.5px;
+        line-height: 1.7;
+        color: var(--charcoal);
+        text-wrap: pretty;
+      }
+      p + p {
+        margin-top: 14px;
+      }
+      ul {
+        margin: 0;
+        padding-left: 18px;
       }
       li {
-        margin-bottom: 6px;
+        margin-bottom: 8px;
       }
-      .note {
-        font-size: 13px;
+      li:last-child {
+        margin-bottom: 0;
+      }
+      ::marker {
         color: var(--muted);
+      }
+
+      /* Scroll reveal */
+      .reveal {
+        opacity: 0;
+        transform: translateY(12px);
+        transition:
+          opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+          transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .reveal.is-visible {
+        opacity: 1;
+        transform: none;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+        .reveal {
+          opacity: 1;
+          transform: none;
+          transition: none;
+        }
       }
     </style>
   </head>
   <body>
-    <div class="wrap">
-      <a class="back" href="/">&larr; Back to fivefour.in</a>
-      <h1>Terms of Service</h1>
-      <p class="meta">FiveFour — last updated August 2026</p>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="grain" aria-hidden="true"></div>
+    <div class="ambient" aria-hidden="true"></div>
 
-      <h2>What you get</h2>
-      <p>
-        We design and build the website described in your plan and scope
-        discussion. Prices are one-time and cover the work in that scope. Things
-        not listed in the scope — new pages, new features, extra revisions — are
-        quoted separately before we start them.
-      </p>
+    <header class="topbar">
+      <a class="brand" href="/" aria-label="FiveFour — back to home">
+        <img src="/assets/brand/fivefour-logo.svg" alt="FiveFour" />
+      </a>
+      <a class="back" href="/">&larr; Back to fivefour.codes</a>
+    </header>
 
-      <h2>What we need from you</h2>
-      <ul>
-        <li>
-          Your text, photos and contact details, so the site can be built and
-          launched.
-        </li>
-        <li>
-          A clear idea of what your business does, if you have one — we'll help
-          you shape it.
-        </li>
-        <li>
-          Access to your domain registrar or hosting account when it's time to
-          go live.
-        </li>
-      </ul>
+    <main class="doc" id="main">
+      <p class="eyebrow reveal">Legal</p>
+      <h1 class="reveal">Terms of Service</h1>
+      <p class="updated reveal">FiveFour &middot; Last updated August 2026</p>
 
-      <h2>Payment</h2>
-      <p>
-        We agree on the price before work starts. A deposit is required to book
-        your slot; the balance is due before launch. Details are confirmed in
-        writing for every project.
-      </p>
+      <article>
+          <section id="what-you-get" class="reveal">
+            <h2>What you get</h2>
+            <p>
+              We design and build the website described in your plan and scope
+              discussion. Prices are one-time and cover the work in that scope.
+              Things not listed in the scope — new pages, new features, extra
+              revisions — are quoted separately before we start them.
+            </p>
+          </section>
 
-      <h2>Revisions</h2>
-      <p>
-        We include a fair number of revision rounds in every plan so the site
-        ends up right. Structural changes — a different layout, a rewritten page
-        purpose — count as new work and are quoted separately.
-      </p>
+          <section id="what-we-need" class="reveal">
+            <h2>What we need from you</h2>
+            <ul>
+              <li>
+                Your text, photos and contact details, so the site can be built
+                and launched.
+              </li>
+              <li>
+                A clear idea of what your business does, if you have one — we'll
+                help you shape it.
+              </li>
+              <li>
+                Access to your domain registrar or hosting account when it's
+                time to go live.
+              </li>
+            </ul>
+          </section>
 
-      <h2>Domains and hosting</h2>
-      <p>
-        Domain and hosting are billed separately at actual cost, paid by you
-        directly to the registrar or host, or through us at the same price. You
-        own your domain and content. We keep copies for backup and maintenance
-        while the project is active.
-      </p>
+          <section id="payment" class="reveal">
+            <h2>Payment</h2>
+            <p>
+              We take 50% advance before work starts, to book your slot and
+              begin. The remaining 50% is due before the site goes live.
+              Details are confirmed in writing for every project. The advance
+              is non-refundable once work has begun.
+            </p>
+          </section>
 
-      <h2>Support after launch</h2>
-      <p>
-        Support covers bug fixes on what we built, for the period stated in your
-        plan. It does not cover new pages or features — those are quoted as paid
-        add-ons.
-      </p>
+          <section id="revisions" class="reveal">
+            <h2>Revisions</h2>
+            <p>
+              Every plan includes 2 rounds of revisions to get the site right.
+              Structural changes — a different layout, a rewritten page purpose
+              — count as new work and are quoted separately.
+            </p>
+          </section>
 
-      <h2>Our side of the bargain</h2>
-      <p>
-        We deliver on time, keep you informed, and use plain language. If we
-        make a mistake, we fix it. If a project is cancelled after work has
-        started, we invoice fairly for the work already done.
-      </p>
+          <section id="domains" class="reveal">
+            <h2>Domains and hosting</h2>
+            <p>
+              Domain and hosting are billed separately at actual cost, paid by
+              you directly to the registrar or host, or through us at the same
+              price. You own your domain and content. We keep working copies
+              for backup and maintenance for 30 days after project completion,
+              then they are removed from our systems.
+            </p>
+          </section>
 
-      <p class="note">
-        This page is a plain-language template. It will be reviewed by a
-        professional before the site goes into public use.
-      </p>
-    </div>
+          <section id="ownership" class="reveal">
+            <h2>Ownership</h2>
+            <p>
+              Full ownership of the website transfers to you once the final
+              payment is received.
+            </p>
+          </section>
+
+          <section id="support" class="reveal">
+            <h2>Support after launch</h2>
+            <p>
+              Support covers bug fixes on what we built, for the period stated
+              in your plan. It does not cover new pages or features — those are
+              quoted as paid add-ons.
+            </p>
+          </section>
+
+          <section id="cancellations" class="reveal">
+            <h2>Cancellations</h2>
+            <p>
+              If a project is cancelled after work has started, the advance is
+              retained to cover work already done. Any additional work
+              completed beyond the advance amount will be invoiced separately.
+            </p>
+          </section>
+
+          <section id="our-side" class="reveal">
+            <h2>Our side of the bargain</h2>
+            <p>
+              We deliver on time, keep you informed, and use plain language. If
+              we make a mistake, we fix it.
+            </p>
+          </section>
+
+          <section id="governing-law" class="reveal">
+            <h2>Governing law</h2>
+            <p>
+              These terms are governed by the laws of India, with disputes
+              subject to the jurisdiction of courts in Ahmedabad, Gujarat.
+            </p>
+          </section>
+        </article>
+    </main>
+
+    <script>
+      (function () {
+        var els = document.querySelectorAll(".reveal");
+        if (
+          !("IntersectionObserver" in window) ||
+          matchMedia("(prefers-reduced-motion: reduce)").matches
+        ) {
+          els.forEach(function (el) {
+            el.classList.add("is-visible");
+          });
+          return;
+        }
+        var io = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (entry) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("is-visible");
+                io.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.12 },
+        );
+        els.forEach(function (el) {
+          io.observe(el);
+        });
+      })();
+    </script>
   </body>
 </html>

@@ -4,72 +4,205 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="robots" content="noindex" />
+    <link rel="icon" type="image/png" href="/assets/brand/fivefour-favicon.png" />
+    <meta name="theme-color" content="#fbfbfa" />
+    <meta
+      name="description"
+      content="The page you're looking for doesn't exist or has moved. Head back to fivefour.codes."
+    />
     <title>404 — Page not found | FiveFour</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <style>
       :root {
-        --ink: #0a0a0a;
-        --cream: #f1efe9;
-        --muted: #8f8f8f;
+        --canvas: #fbfbfa;
+        --ink: #111111;
+        --charcoal: #2f3437;
+        --muted: #787774;
+        --line: #eaeaea;
       }
-      * { box-sizing: border-box; }
+      * {
+        box-sizing: border-box;
+      }
       body {
         margin: 0;
         min-height: 100vh;
-        background: var(--ink);
-        color: var(--cream);
-        font-family: "Geist Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
+        background: var(--canvas);
+        color: var(--ink);
+        font-family: "Geist Sans", "Helvetica Neue", "Segoe UI", system-ui, sans-serif;
+        line-height: 1.65;
+        -webkit-font-smoothing: antialiased;
+      }
+      a {
+        color: inherit;
+      }
+      :focus-visible {
+        outline: 2px solid var(--ink);
+        outline-offset: 3px;
+      }
+
+      /* Soft warm light spot, kept behind content */
+      .glow {
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        pointer-events: none;
+        background: radial-gradient(
+          700px circle at 50% 28%,
+          rgba(214, 200, 168, 0.14),
+          transparent 62%
+        );
+      }
+
+      /* Fixed noise overlay — breaks the flat canvas, matches the main site */
+      .grain {
+        position: fixed;
+        inset: 0;
+        z-index: 50;
+        pointer-events: none;
+        opacity: 0.035;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      }
+
+      /* Top bar — brand left, back link right */
+      .topbar {
+        position: relative;
+        z-index: 1;
         display: flex;
         align-items: center;
-        justify-content: center;
-        padding: 24px;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 20px clamp(20px, 5vw, 48px);
+        border-bottom: 1px solid var(--line);
+        background: rgba(251, 251, 250, 0.92);
+        backdrop-filter: blur(8px);
       }
-      .wrap { text-align: center; max-width: 560px; }
-      .code {
-        font-family: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
-        font-size: clamp(96px, 22vw, 180px);
-        font-weight: 700;
-        line-height: 1;
-        letter-spacing: -0.04em;
-        color: var(--cream);
-        opacity: 0.14;
+      .brand {
+        display: flex;
+        align-items: center;
+      }
+      .brand img {
+        height: 24px;
+        width: auto;
+        display: block;
+      }
+
+      /* Center stage */
+      .center {
+        position: relative;
+        z-index: 1;
+        min-height: calc(100vh - 65px);
+        min-height: calc(100dvh - 65px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 64px 24px 96px;
+      }
+      .eyebrow {
         margin: 0;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 12px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+      .display {
+        margin: 12px 0 0;
+        font-family: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
+        font-weight: 700;
+        font-size: clamp(88px, 20vw, 150px);
+        line-height: 0.95;
+        letter-spacing: -0.04em;
+        color: var(--ink);
         user-select: none;
       }
-      h1 {
-        font-family: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
-        font-size: clamp(26px, 5vw, 36px);
-        font-weight: 600;
-        line-height: 1.1;
-        letter-spacing: -0.02em;
-        margin: -28px 0 0;
+      .lede {
+        margin: 28px 0 0;
+        max-width: 42ch;
+        font-size: 16px;
+        line-height: 1.7;
+        color: var(--charcoal);
+        text-wrap: pretty;
       }
-      p { font-size: 15px; line-height: 1.65; color: var(--muted); margin: 16px 0 32px; }
+      .actions {
+        margin-top: 40px;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 16px 28px;
+      }
       .btn {
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        background: #ffffff;
-        color: var(--ink);
-        font-family: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
+        padding: 14px 28px;
+        border-radius: 6px;
+        background: var(--ink);
+        color: #ffffff;
+        font-family: "Geist Sans", "Helvetica Neue", "Segoe UI", system-ui, sans-serif;
         font-size: 13px;
         font-weight: 500;
+        letter-spacing: 0.08em;
         text-transform: uppercase;
-        letter-spacing: 0.18em;
         text-decoration: none;
-        border-radius: 6px;
-        padding: 14px 28px;
-        transition: background-color 0.2s ease, transform 0.2s ease;
+        transition:
+          background-color 0.2s ease-out,
+          transform 0.2s ease-out;
       }
-      .btn:hover { background-color: #e6e6e6; }
-      .btn:active { transform: scale(0.97); }
+      .btn:hover {
+        background: #333333;
+      }
+      .btn:active {
+        transform: scale(0.98);
+      }
+
+      .visually-hidden {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+        white-space: nowrap;
+        border: 0;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .btn {
+          transition: none;
+        }
+      }
     </style>
   </head>
   <body>
-    <div class="wrap">
-      <p class="code" aria-hidden="true">404</p>
-      <h1>404 — Page not found</h1>
-      <p>The page you're looking for doesn't exist.</p>
-      <a class="btn" href="/">Back to Home</a>
-    </div>
+    <div class="glow" aria-hidden="true"></div>
+    <div class="grain" aria-hidden="true"></div>
+
+    <header class="topbar">
+      <a class="brand" href="/" aria-label="FiveFour — back to home">
+        <img src="/assets/brand/fivefour-logo.svg" alt="FiveFour" />
+      </a>
+    </header>
+
+    <main class="center">
+      <p class="eyebrow">Error 404 &middot; Not found</p>
+      <p class="display" aria-hidden="true">404</p>
+      <h1 class="visually-hidden">Page not found</h1>
+      <p class="lede">
+        The page you're looking for doesn't exist or has moved. If you followed
+        a link from the site, try the homepage — it's all there.
+      </p>
+      <div class="actions">
+        <a class="btn" href="/">Back to Home</a>
+      </div>
+    </main>
   </body>
 </html>
