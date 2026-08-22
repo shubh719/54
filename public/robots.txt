@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://fivefour.codes/sitemap.xml
+Sitemap: https://www.fivefour.codes/sitemap.xml
