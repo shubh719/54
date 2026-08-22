@@ -12,6 +12,9 @@ Static one-page marketing site for **FiveFour**, a web design agency selling cle
 
 ## Prerequisites
 
+- Node.js 18+ (with npm)
+- A free Web3Forms access key — get one at [https://web3forms.com](https://web3forms.com)
+
 ## Step-by-step: clone and run
 
 ### 1. Clone the repository
