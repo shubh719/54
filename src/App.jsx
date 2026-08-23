@@ -1,15 +1,21 @@
+import { lazy, Suspense } from "react";
 import Nav from "./components/Nav";
 import Hero from "./components/Hero";
-import Services from "./components/Services";
-import Portfolio from "./components/Portfolio";
-import Process from "./components/Process";
-import WhyChooseUs from "./components/WhyChooseUs";
-import Testimonials from "./components/Testimonials";
-import Pricing from "./components/Pricing";
-import Faq from "./components/Faq";
-import Contact from "./components/Contact";
-import FinalCta from "./components/FinalCta";
 import Footer from "./components/Footer";
+
+const Services = lazy(() => import("./components/Services"));
+const Portfolio = lazy(() => import("./components/Portfolio"));
+const Process = lazy(() => import("./components/Process"));
+const WhyChooseUs = lazy(() => import("./components/WhyChooseUs"));
+const Testimonials = lazy(() => import("./components/Testimonials"));
+const Pricing = lazy(() => import("./components/Pricing"));
+const Faq = lazy(() => import("./components/Faq"));
+const Contact = lazy(() => import("./components/Contact"));
+const FinalCta = lazy(() => import("./components/FinalCta"));
+
+function SectionFallback() {
+  return <div className="section-pad" aria-hidden="true" />;
+}
 
 export default function App() {
   return (
@@ -24,15 +30,17 @@ export default function App() {
       <Nav />
       <main id="main" tabIndex={-1} className="outline-none">
         <Hero />
-        <Services />
-        <Portfolio />
-        <Process />
-        <WhyChooseUs />
-        <Testimonials />
-        <Pricing />
-        <Faq />
-        <Contact />
-        <FinalCta />
+        <Suspense fallback={<SectionFallback />}>
+          <Services />
+          <Portfolio />
+          <Process />
+          <WhyChooseUs />
+          <Testimonials />
+          <Pricing />
+          <Faq />
+          <Contact />
+          <FinalCta />
+        </Suspense>
       </main>
       <Footer />
     </div>

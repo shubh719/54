@@ -1,5 +1,57 @@
 @import "tailwindcss";
 
+/* Self-hosted fonts — woff2 only, no .woff fallback.
+   Material Symbols subsetted to 21 glyphs (vs ~3000 full font). */
+@font-face {
+  font-family: "Geist Sans";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url("/fonts/geist-sans-latin-400-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Geist Sans";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 500;
+  src: url("/fonts/geist-sans-latin-500-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Space Grotesk";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url("/fonts/space-grotesk-latin-400-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Space Grotesk";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 500;
+  src: url("/fonts/space-grotesk-latin-500-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Space Grotesk";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 600;
+  src: url("/fonts/space-grotesk-latin-600-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Space Grotesk";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url("/fonts/space-grotesk-latin-700-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Material Symbols Outlined";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url("/fonts/material-symbols-outlined-latin-400-normal.woff2") format("woff2");
+}
+
 @theme {
   /* Shape rule (single radius system):
      - Interactive controls (buttons, inputs): 6px
@@ -31,8 +83,7 @@
 }
 
 /*
-  Material Symbols (Outlined) load self-hosted via @fontsource
-  (imported in main.jsx). Defined here without a font-size so
+  Material Symbols (Outlined). Defined here without a font-size so
   Tailwind text-* utilities can size glyphs.
 */
 .ms {
