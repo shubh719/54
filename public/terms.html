@@ -17,6 +17,10 @@
       href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,400,0,0"
+      rel="stylesheet"
+    />
     <style>
       :root {
         --canvas: #fbfbfa;
@@ -105,6 +109,9 @@
         display: block;
       }
       .back {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
         font-size: 13.5px;
         color: var(--muted);
         text-decoration: none;
@@ -113,8 +120,15 @@
       }
       .back:hover {
         color: var(--ink);
+        text-decoration: none;
+      }
+      .back:hover .back-label {
         text-decoration: underline;
         text-underline-offset: 3px;
+      }
+      .back .material-symbols-outlined {
+        font-size: 18px;
+        line-height: 1;
       }
 
       /* Document */
@@ -222,7 +236,7 @@
       <a class="brand" href="/" aria-label="FiveFour — back to home">
         <img src="/assets/brand/fivefour-logo.svg" alt="FiveFour" />
       </a>
-      <a class="back" href="/">&larr; Back to fivefour.codes</a>
+      <a class="back" href="/"><span class="material-symbols-outlined" aria-hidden="true">arrow_back</span><span class="back-label">Back to fivefour.codes</span></a>
     </header>
 
     <main class="doc" id="main">
