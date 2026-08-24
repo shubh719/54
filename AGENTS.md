@@ -24,7 +24,7 @@ Static one-page marketing site for **FiveFour**, a web design agency selling cle
 ## Page sections (in order)
 
 1. **Nav** — sticky white header, desktop links with underline hover + scroll-spy (IntersectionObserver marks the section in the viewport's middle band, `aria-current`); mobile: full-screen black overlay menu (numbered links, staggered `hero-rise` entrance, body scroll lock + `inert` on background for a11y, focus managed).
-2. **Hero** — black-950, centered type, radial white glow, `hero-rise` staggered entrance, key-benefit pills (₹4,999 / 7-10 days / WhatsApp-first), inverse CTAs, looping marquee ("Web Design · Development · SEO · Launch") pinned to the fold.
+2. **Hero** — monochrome black-to-charcoal linear gradient, centered type, `hero-rise` entrance, inverse CTAs, looping marquee ("Web Design · Development · SEO · Launch") pinned to the fold.
 3. **Services** — white; asymmetric 6-card grid (featured black card spans 4 cols/2 rows).
 4. **Portfolio** (`#work`) — black-950; equal 3-column grid (2-col on md, single column on mobile). Plain, content-only dark cards (`bg-black-900`, hairline `white/15` border, `rounded-[14px]`) — no icons, illustrations, textures, or decorative elements. Category label (small uppercase), title, tag pills, description, and sweep-fill CTA. Tag pills are static labels (non-interactive — no hover fill). Card lifts ~5px and border brightens to `white/30` on hover. Any card with a `url` renders an active "Visit Website" link; cards without a `url` render a disabled "Link coming soon" CTA.
 5. **Process** — white; 4 numbered steps; vertical rail through circle centers on mobile, single horizontal rail on desktop (`lg:before`); wrapped in staggered `Reveal`.

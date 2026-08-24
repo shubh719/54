@@ -8,11 +8,7 @@ export default function Hero() {
     // min-height = 100dvh minus the sticky header (h-16 / lg:h-[72px]),
     // so the marquee lands exactly on the fold with no bleed into the
     // next section on mobile.
-    <section className="relative flex min-h-[calc(100dvh-4rem)] flex-col overflow-hidden bg-black-950 lg:min-h-[calc(100dvh-4.5rem)]">
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 top-0 z-0 h-[620px] bg-[radial-gradient(60%_55%_at_50%_0%,rgba(255,255,255,0.08),transparent_70%)]"
-      />
+    <section className="relative flex min-h-[calc(100dvh-4rem)] flex-col overflow-hidden bg-[linear-gradient(135deg,#0a0a0a_0%,#202020_52%,#0a0a0a_100%)] lg:min-h-[calc(100dvh-4.5rem)]">
 
       <div className="container-site hero-pad relative z-10 flex flex-1 flex-col items-center justify-center text-center">
         <p
@@ -38,22 +34,6 @@ export default function Hero() {
           <br />
           Honest one-time pricing. No hidden costs.
         </p>
-
-        <ul
-          className="hero-rise mt-6 hidden max-w-3xl flex-wrap items-center justify-center gap-x-4 gap-y-2 text-[13px] text-black-300 sm:flex"
-          style={{ animationDelay: "290ms" }}
-          aria-label="Key benefits"
-        >
-          <li className="rounded-[4px] border border-white/15 px-3 py-1.5">
-            Starter starts at ₹4,999
-          </li>
-          <li className="rounded-[4px] border border-white/15 px-3 py-1.5">
-            Launch in 7-10 days
-          </li>
-          <li className="rounded-[4px] border border-white/15 px-3 py-1.5">
-            WhatsApp-first communication
-          </li>
-        </ul>
 
         <div
           className="hero-cta-margin hero-rise flex flex-col items-center gap-3 sm:flex-row sm:gap-4"
