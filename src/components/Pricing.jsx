@@ -97,8 +97,8 @@ function PlanCard({ plan }) {
 
 function CustomPanel({ plan }) {
   return (
-    <article className="flex flex-col gap-8 border border-white/15 bg-black-900 p-6 md:p-8 lg:flex-row lg:items-center lg:justify-between lg:gap-12">
-      <div className="flex items-start gap-4 lg:max-w-md">
+    <article className="flex flex-col gap-8 border border-white/15 bg-black-900 p-6 md:p-8 lg:flex-row lg:items-center lg:gap-16">
+      <div className="flex flex-1 flex-col items-start gap-4 lg:max-w-2xl lg:flex-row">
         <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-[8px] bg-white text-black-950">
           <Icon name={plan.icon} className="text-[16px]" />
         </span>
@@ -111,17 +111,6 @@ function CustomPanel({ plan }) {
           </p>
         </div>
       </div>
-
-      <ul className="flex max-w-md flex-wrap gap-2">
-        {plan.includes.map((item) => (
-          <li
-            key={item}
-            className="rounded-[4px] border border-white/15 px-3 py-1.5 text-[12px] leading-relaxed text-black-300"
-          >
-            {item}
-          </li>
-        ))}
-      </ul>
 
       <div className="flex shrink-0 items-center gap-6">
         <div>

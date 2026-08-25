@@ -50,14 +50,8 @@ export const pricing = {
       price: "Custom",
       priceNote: "quoted after a call",
       tagline:
-        "For bigger builds: e-commerce, bookings, dashboards, logins. Anything with a real backend.",
-      includes: [
-        "E-commerce with cart & payments",
-        "Booking / appointment system",
-        "Admin dashboard (edit content yourself)",
-        "Database-backed features (Supabase)",
-        "Multi-language support",
-      ],
+        "For bigger builds that need more room to grow — from advanced customer journeys and custom workflows to secure integrations and other functionality beyond a standard business website. We scope the right solution around your goals, then build it with care.",
+      includes: [],
       cta: "Talk to us",
       featured: false,
       custom: true,

@@ -57,15 +57,7 @@ Three plans, no hidden line items. Pick what fits your business today, and step 
 
 ## Custom - Starting ₹18,000 (quoted after a call)
 
-*For bigger requirements.* E-commerce, bookings, logins, dashboards: anything that needs a real backend.
-
-**Includes (pick what applies):**
-- E-commerce with cart + payments
-- Booking / appointment system
-- Customer login system
-- Admin dashboard, no-code editing
-- Database-backed features (Supabase)
-- Multi-language support
+*For bigger builds that need more room to grow* — from advanced customer journeys and custom workflows to secure integrations and other functionality beyond a standard business website. We scope the right solution around your goals, then build it with care.
 
 **Details:**
 | | |
