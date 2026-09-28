@@ -22,7 +22,7 @@ export default function Hero() {
           className="hero-title hero-rise mt-3 max-w-[14ch] font-display text-[clamp(48px,12vw,88px)] font-bold leading-[1.02] tracking-[-0.03em] text-cream text-balance"
           style={{ animationDelay: "140ms" }}
         >
-          Websites that work for your business.
+          Build Your Business. Not Just a Website.
         </h1>
 
         <p
